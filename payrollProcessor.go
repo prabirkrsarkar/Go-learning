@@ -84,6 +84,7 @@ func processPayroll(employee []Payable) {
 	for _, e := range employee {
 		printEmployeeDetails(e) // Generic function to print employee details, demonstrating the use of interfaces and polymorphism.
 		pay := e.CalculatePay() //Depending on the type of employee, the appropriate CalculatePay method will be called, demonstrating polymorphism.
+		fmt.Printf("Monthly Pay : %f\n", pay)
 		fmt.Printf(" -- Payroll processed: $%.2f\n", pay)
 		totalPayroll += pay
 	}
