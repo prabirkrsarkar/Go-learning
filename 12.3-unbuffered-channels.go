@@ -5,9 +5,11 @@ type user struct {
 }
 
 func main() {
-	// Create a channel to communicate between goroutines
+	// Create channels to communicate between goroutines
+	// This channel can create and receive strings
 	messages := make(chan string)
 
+	// This channel can create and receive values of type user
 	users := make(chan user)
 
 	go func() {

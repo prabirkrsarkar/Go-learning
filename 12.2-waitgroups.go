@@ -7,7 +7,7 @@ import (
 )
 
 func sayHello(message string, delay time.Duration, wg *sync.WaitGroup) {
-	defer wg.Done()
+	defer wg.Done() // Decrements the Waitgroup counter by 1, signals that the Go routine is done.
 	time.Sleep(delay)
 	fmt.Println("From sayHello:", message)
 }
@@ -17,8 +17,8 @@ func main() {
 	/* Rules for using wait groups
 	1. Define the wait group outside of the goroutines.
 	2. Add to the wait group counter before starting each goroutine with wg.Add().
-	3. Decrement the wait group counter when a goroutine completes with wg.Done().
-	4. Call `Wait` on the wait group to block until all goroutines have finished with wg.Wait().
+	3. You MUST Decrement the wait group counter when a goroutine completes with wg.Done().
+	4. Call `Wait` on the wait group (wg.Wait()) to block until all goroutines have finished.
 	5. Always pass a pointer to the wait group, not a copy,to the goroutines so they can modify the same wait group instance.
 	*/
 
