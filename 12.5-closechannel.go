@@ -38,9 +38,9 @@ func main() {
 		fmt.Println("Sending message", i)
 	}
 
-	close(jobs)
+	close(jobs) // Closing the Channel.
 
-	// This receive will make the main Go routine wait for sender.
+	// <-jobs This receive will make the main Go routine wait for sender.
 	// If there are no senders then program will fail
 	// Alternative to Waitgroup
 	wg.Wait()
